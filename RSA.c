@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "calculate.h"
+#include "util.h"
+
+#define MSGLVL INFO
 
 typedef enum { false, true } bool;
 
@@ -45,12 +48,19 @@ void main()
       }
 
       n = p*q;
+
       pKey = phi + erwEuklid(pub, phi);
+
+      if (MSGLVL >= DEBUG) printf("\nString Länge = %d",len);
+      if (MSGLVL >= DEBUG) printf("\nphi = %d",phi);
+      if (MSGLVL >= DEBUG) printf("\nn = %d",n);
+      if (MSGLVL >= DEBUG) printf("\nPublic-Key: %d\nPrivate-Key: %d\n\n", pub, pKey);
 
       printf("-----------------\nENCRYPTED MESSAGE:\n");
       for(i = 0;input[i]!='\0';i++)
       {
             en[i] = crypt(input[i], pub, n);
+            if (MSGLVL >= DEBUG) printf("\n %d=",en[i]);
             printf("%c",(char) en[i]);
       }
 
@@ -58,7 +68,9 @@ void main()
       for(i = 0;en[i]!='\0';i++)
       {
             de[i] = crypt(en[i], pKey, n);
+            if (MSGLVL >= DEBUG) printf("\n %d=",de[i]);
             printf("%c", (char)de[i]);
       }
       printf("\n-----------------\n");
+      printf("\ndone.\n");
 }

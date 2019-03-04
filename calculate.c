@@ -1,5 +1,9 @@
 #include <stdlib.h>
 #include <math.h>
+#include <stdio.h>
+#include "util.h"
+
+#define MSGLVL DEBUG
 
 int i,j; // Zählvariabeln
 
@@ -34,7 +38,6 @@ int erwEuklid(int a, int b){      //  Erweiterer Euklidischer Algorithmus
   int q,r,m,n;
 
   if(b>a) return erwEuklid ( b,a);
-
   while(b!=0){
   q = a/b;
   r = a%b;
