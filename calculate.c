@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "util.h"
 
-#define MSGLVL DEBUG
+#define MSGLVL INFO
 
 int i,j; // Zählvariabeln
 
